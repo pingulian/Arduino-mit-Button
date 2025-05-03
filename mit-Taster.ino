@@ -139,11 +139,23 @@ void loop() {
         Serial.println("Verbindung hergestellt mit: " + central.address());
         //delay(10000);
         while (central.connected()) {
-          String dataString = "Länge der Strings (0-basiert):" + String(counter) + "\nTemperaturdaten:\n" + temperaturdata + "\nDruckdaten:\n" + druckdata;
+          String dataString = "Länge der Strings (0-basiert):" + String(counter);
 
           // Temperaturänderungen nur bei Bedarf senden
           serialCharacteristic.writeValue(dataString.c_str());
           Serial.println("Daten gesendet: " + dataString);
+
+          String dataString2 = "Temperaturdaten:\n" + temperaturdata;
+
+          // Temperaturänderungen nur bei Bedarf senden
+          serialCharacteristic.writeValue(dataString2.c_str());
+          Serial.println("Daten gesendet: " + dataString2);
+
+          String dataString3 = "Druckdaten:\n" + druckdata;
+
+          // Temperaturänderungen nur bei Bedarf senden
+          serialCharacteristic.writeValue(dataString3.c_str());
+          Serial.println("Daten gesendet: " + dataString3);
 
           delay(1000);
         }
